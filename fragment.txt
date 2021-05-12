@@ -1,0 +1,34 @@
+local widget = require( "widget" )
+local t = display.newText( "", 0, 0, native.systemFont, 18 )
+t.x, t.y = display.contentCenterX, 70
+
+file = io.open("C:/file.txt", "r")
+local x
+local i=0
+local suma=-1
+local tablica = {}
+while true do   
+    i = i+1
+    tablica[i] = file:read("*line")   
+        suma = suma +1   
+if tablica[i] == " " then break end
+end
+file:close()
+local
+button1Release = function( event )
+    a = math.random(suma)
+    t.text = tablica[a]
+
+end
+local buttonHandler = function( event )
+    t.text = "id = " .. event.target.id .. ", phase = " .. event.phase
+end
+local button1 = widget.newButton
+{
+    defaultFile = "buttonRed.png",
+    overFile = "buttonRedOver.png",
+    label = "Wybierz",
+    emboss = true,
+    onPress = button1Press,
+    onRelease = button1Release,
+}
